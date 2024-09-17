@@ -1,0 +1,25 @@
+npm run dev运行指令
+
+index.html主文件
+
+public-favicon.ico浏览器的图标
+
+src文件夹:
+	App.vue-主页面的组件
+	main.ts-主ts文件
+	assets-所有照片的资源
+	router-路由的布局:
+		index.ts-路由器的总布局
+	component-各种组件：
+		Left.vue-左侧总组件
+		Mid.vue-中间总组件
+		Right.vue-右侧总组件
+		left-左侧组件文件夹：
+			Logo.vue-标志组件
+			LeftFunction.vue-左侧功能组件
+			Navigation.vue-左侧导航栏组件
+			History.vue-历史记录组件
+			PersonalCenter.vue-个人中心组件
+		mid-中间组件文件夹：	
+		right-右侧组件文件夹：
+		
