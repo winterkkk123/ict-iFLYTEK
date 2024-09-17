@@ -1,2 +1,2 @@
 # ict-iFLYTEK
-ict
+it's only a test.
