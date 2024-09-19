@@ -3,6 +3,7 @@
     <!-- 初始化,问题提出后删除 -->
     <div class="before-question">
       <MidTitle class="mid-title"/>
+      <MidFunction class="mid-function"/>
     </div>
 
     <!-- 问题提问之后产生 -->
@@ -44,6 +45,9 @@
   .before-question {
     width: 100%;
     height: 90%;
+  }
+  .mid-function {
+    width: 100%;
   }
   .after-question {
     width:100%;

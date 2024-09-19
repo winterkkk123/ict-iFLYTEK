@@ -105,4 +105,7 @@
       opacity: 1;
     }
   }
+  h1 {
+    font-weight: 500;
+  }
 </style>
