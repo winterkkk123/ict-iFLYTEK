@@ -5,14 +5,14 @@
       <MidTitle class="mid-title"/>
       <MidFunction class="mid-function"/>
     </div>
-
     <!-- 问题提问之后产生 -->
-     <div v-if="isQuestionAsked" class="after-question">
+    <div v-if="isQuestionAsked" class="after-question">
       <div class="after-question-top"></div>
-      <User :question="question" class="user"/>
-      <Chat class="chat"/>
-     </div>
-
+      <div v-for="(item, index) in questions" :key="index" class="user">
+        <User :question="item.question" class="user"/>
+        <Chat :answer="item.answer" class="chat"/>
+      </div>
+    </div>
     <!-- 底部提问模块,一直存在 -->
     <div class="perpetual">
       <Question @search-click="onSearchClick" class="question"/>
@@ -29,15 +29,20 @@
   import MidFunction from './IntellectualDialogue/MidFunction.vue';
   import MidTitle from './IntellectualDialogue/MidTitle.vue';
 
-  import { ref } from 'vue';
+  import { ref,reactive } from 'vue';
 
   // 定义一个响应式变量来追踪是否已提出问题
   const isQuestionAsked = ref(false);
-  const question = ref('');
+  
+  // 存储提问和回答的内容
+  const questions = reactive<
+    Array<{ question: string; answer: string }>
+  >([]);
 
   // 处理搜索按钮点击的方法
-  function onSearchClick(value:string) {
-    question.value = value;
+  function onSearchClick(value: string) {
+    const newQuestion = { question: value, answer: '' };
+    questions.push(newQuestion);
     isQuestionAsked.value = true;
   }
 </script>
@@ -99,5 +104,10 @@
     width: 100%;
     position: absolute;
     bottom: 0;
+  }
+
+  /* 自定义滚动条样式 */
+  .after-question::-webkit-scrollbar {
+    width: 0px; /* 滚动条宽度 */
   }
 </style>
