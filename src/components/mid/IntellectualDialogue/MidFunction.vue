@@ -77,7 +77,7 @@
   .mid-function {
     width: 100%;
     height: 35%;
-    min-height: 420px;
+    min-height: 430px;
     overflow: auto;
   }
   ul {

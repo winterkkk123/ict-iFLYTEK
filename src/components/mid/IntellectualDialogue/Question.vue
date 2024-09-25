@@ -1,12 +1,20 @@
 <template>
   <div class="question">
     <input type="text" placeholder="在此输入您想了解的内容,Shift+Enter换行" class="input">
-    <button>发送</button>
+    <button @click="emitSearchClick">发送</button>
   </div>
 </template>
 
 <script lang="ts" setup name="Question">
-
+  import { ref } from 'vue';
+  import { defineEmits } from 'vue';
+  // 定义事件
+  const emit = defineEmits(['search-click']);
+  const inputValue = ref('');
+  // 检测点击发送按钮
+  function emitSearchClick() {
+    emit('search-click', inputValue.value);
+  }
 </script>
 
 <style scoped>
