@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts" setup name="User">
-  import { ref, defineProps } from 'vue';
+  import { ref } from 'vue';
+  // import { defineProps } from 'vue';
 
   const props = defineProps<{ question?: string }>();
   const question = ref(props.question || '');

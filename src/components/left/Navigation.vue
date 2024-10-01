@@ -11,15 +11,15 @@
         </RouterLink>
       </li>
       <li>
-        <RouterLink to="/enrollmentAndWelcome" class="routerlink" active-class="at-present">
-          <img src="@/assets/EnrollmentAndWelcome.png" alt="">
-          招生迎新
+        <RouterLink to="/crossCulturalChatRoom" class="routerlink" active-class="at-present">
+          <img src="@/assets/CrossCulturalChatRoom.png" alt="">
+          跨文化聊天室
         </RouterLink>
       </li>
       <li>
-        <RouterLink to="/iTQuestionsAndAnswers" class="routerlink" active-class="at-present">
-          <img src="@/assets/ITQuestionAndAnswers.png" alt="">
-          IT问答
+        <RouterLink to="/enrollmentAndWelcome" class="routerlink" active-class="at-present">
+          <img src="@/assets/EnrollmentAndWelcome.png" alt="">
+          招生迎新
         </RouterLink>
       </li>
       <li>
@@ -32,6 +32,12 @@
         <RouterLink to="/applicationForm" class="routerlink" active-class="at-present">
           <img src="@/assets/ApplicationForm.png" alt="">
           志愿填报
+        </RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/iTQuestionsAndAnswers" class="routerlink" active-class="at-present">
+          <img src="@/assets/ITQuestionAndAnswers.png" alt="">
+          IT问答
         </RouterLink>
       </li>
     </ul>

@@ -6,20 +6,54 @@ public-favicon.ico浏览器的图标
 
 src文件夹:
 	App.vue-主页面的组件
+
 	main.ts-主ts文件
+
 	assets-所有照片的资源
+
 	router-路由的布局:
 		index.ts-路由器的总布局
+
 	component-各种组件：
 		Left.vue-左侧总组件
 		Mid.vue-中间总组件
 		Right.vue-右侧总组件
+		Register.vue-注册登录总组件
+		
+		Register-注册登录组件文件夹:
+
 		left-左侧组件文件夹：
 			Logo.vue-标志组件
 			LeftFunction.vue-左侧功能组件
 			Navigation.vue-左侧导航栏组件
 			History.vue-历史记录组件
 			PersonalCenter.vue-个人中心组件
+
 		mid-中间组件文件夹：	
+			ApplicationForm-志愿填报组件文件夹
+			EmployMentGuidance-就业指导组件文件夹
+			EnrollmentAndWelcome-招生迎新组件文件夹
+			ITQuestionsAndAnswers-IT问答组件文件夹
+			IntellectualDialogue-智能对话组件文件夹
+				Annotate.vue-最下边注释组件
+				Chat.vue-chat回答组件
+				MidFunction.vue-中间功能组件（6个最开始出现，提问时候消失）
+				MidTitle.vue-标题组件（最开始出现，提问的时候消失）
+				Question.vue-提问组件
+				User.vue-用户提问组件
+			CrossCulturalChatRoom-跨文化聊天室组件文件夹
+
+			ApplicationForm.vue-志愿填报组件
+			EmployMentGuidance.vue-就业指导组件
+			EnrollmentAndWelcome.vue-招生迎新组件
+			IntellectualDialogue.vue-智能对话组件
+			ITQuestionsAndAnswers.vue-IT问答组件
+			CrossCulturalChatRoom.vue-跨文化聊天室组件文件夹
+		
 		right-右侧组件文件夹：
+			Files.vue-文件组件
+			Folders.vue-文件夹组件
+			RightTitle.vue-标题组件
+			Search.vue-搜索组件
+			SeeMore.vue-查看更多组件
 		

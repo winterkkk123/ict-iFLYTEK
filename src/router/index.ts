@@ -7,6 +7,7 @@ import EmployMentGuidance from "@/components/mid/EmployMentGuidance.vue"
 import EnrollmentAndWelcome from "@/components/mid/EnrollmentAndWelcome.vue"
 import IntellectualDialogue from "@/components/mid/IntellectualDialogue.vue"
 import ITQuestionsAndAnswers from "@/components/mid/ITQuestionsAndAnswers.vue"
+import CrossCulturalChatRoom from "@/components/mid/CrossCulturalChatRoom.vue"
 
 // 创建路由实例
 const router = createRouter({
@@ -22,6 +23,10 @@ const router = createRouter({
     {
       path:'/applicationForm',
       component:ApplicationForm
+    },
+    {
+      path:'/crossCulturalChatRoom',
+      component:CrossCulturalChatRoom
     }
     ,
     {

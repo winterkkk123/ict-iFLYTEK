@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup name="Register">
-  import { defineEmits,reactive } from 'vue';
+  import { reactive } from 'vue';
 
   const userInfo = reactive({
     email:'',

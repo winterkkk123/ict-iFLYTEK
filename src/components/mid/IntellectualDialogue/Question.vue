@@ -8,7 +8,7 @@
 <script lang="ts" setup name="Question">
   import { ref } from 'vue';
   import { watchEffect } from 'vue';
-  import { defineEmits } from 'vue';
+  // import { defineEmits } from 'vue';
   // 定义事件
   const emit = defineEmits(['search-click']);
   const inputValue = ref('');

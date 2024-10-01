@@ -10,7 +10,7 @@
           <img v-else-if="midfunction.logo === 'ITQuestionsAndAnswers'" src="@/assets/Blue-ITQuestionsAndAnswers.png" alt="">
           <img v-else-if="midfunction.logo === 'EnployMentGuidance'" src="@/assets/Blue-EmployMentGuidance.png" alt="">
           <img v-else-if="midfunction.logo === 'ApplicationForm'" src="@/assets/Blue-ApplicationForm.png" alt="">
-          <img v-else-if="midfunction.logo === 'History'" src="@/assets/Blue-History.png" alt="">
+          <img v-else-if="midfunction.logo === 'CrossCulturalChatRoom'" src="@/assets/Blue-CrossCulturalChatRoom.png" alt="">
         </div>
         <!-- 右侧内容 -->
         <div class="functionRight">
@@ -38,16 +38,17 @@
     }
     ,
     {
+      logo:'CrossCulturalChatRoom',
+      name:'跨文化聊天室',
+      explain:'自己选择多种语言进行交谈',
+      heatvalue:'5.1W'
+    }
+    ,
+    {
       logo:'EnrollmentAndWelcome',
       name:'招生迎新',
       explain:'招生信息和迎新安排',
       heatvalue:'19882',
-    },
-    {
-      logo:'ITQuestionsAndAnswers',
-      name:'IT问答',
-      explain:'输入问题,自动做出回答',
-      heatvalue:'5.3W'
     }
     , 
     {
@@ -65,10 +66,10 @@
     }
     ,
     {
-      logo:'History',
-      name:'历史对话',
-      explain:'查询搜索历史与个人文件中心',
-      heatvalue:'5.1W'
+      logo:'ITQuestionsAndAnswers',
+      name:'IT问答',
+      explain:'输入问题,自动做出回答',
+      heatvalue:'5.3W'
     }
   ])
 </script>
