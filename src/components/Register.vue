@@ -45,17 +45,17 @@
   // 登录按钮点击事件
   const handleLogin = () => {
     // 触发登录事件
-    console.log('登录按钮被点击');
+    // console.log('登录按钮被点击');
     emit('login'); // 发出 login 事件
   }
   
   // 注册账号按钮点击事件
   const accountRegistration = () => {
-    console.log('注册账号按钮被点击');
+    // console.log('注册账号按钮被点击');
   }
   // 忘记密码按钮点击事件
   const forgotPassword = () => {
-    console.log('忘记密码按钮被点击');
+    // console.log('忘记密码按钮被点击');
   }
 
 </script>
