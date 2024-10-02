@@ -4,7 +4,7 @@ import { createRouter,createWebHashHistory } from "vue-router"
 //引入路由配置文件
 import ApplicationForm from "@/components/mid/ApplicationForm.vue"
 import EmployMentGuidance from "@/components/mid/EmployMentGuidance.vue"
-import EnrollmentAndWelcome from "@/components/mid/EnrollmentAndWelcome.vue"
+import PersonalRecommendation from "@/components/mid/PersonalRecommendation.vue"
 import IntellectualDialogue from "@/components/mid/IntellectualDialogue.vue"
 import ITQuestionsAndAnswers from "@/components/mid/ITQuestionsAndAnswers.vue"
 import CrossCulturalChatRoom from "@/components/mid/CrossCulturalChatRoom.vue"
@@ -34,8 +34,8 @@ const router = createRouter({
       component:EmployMentGuidance
     },
     {
-      path:'/enrollmentAndWelcome',
-      component:EnrollmentAndWelcome
+      path:'/personalRecommendation',
+      component:PersonalRecommendation
     },
     {
       path:'/itQuestionsAndAnswers',

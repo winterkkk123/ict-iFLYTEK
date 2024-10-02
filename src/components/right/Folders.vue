@@ -43,7 +43,7 @@
   }
   li {
     display: flex;
-    margin-right: 9px;
+    /* margin-right: 0px; */
     font-size: 0.8rem;
   }
   button {

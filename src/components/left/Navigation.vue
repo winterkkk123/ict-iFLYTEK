@@ -17,9 +17,9 @@
         </RouterLink>
       </li>
       <li>
-        <RouterLink to="/enrollmentAndWelcome" class="routerlink" active-class="at-present">
-          <img src="@/assets/EnrollmentAndWelcome.png" alt="">
-          招生迎新
+        <RouterLink to="/personalRecommendation" class="routerlink" active-class="at-present">
+          <img src="@/assets/PersonalRecommendation.png" alt="">
+          个性化推荐
         </RouterLink>
       </li>
       <li>

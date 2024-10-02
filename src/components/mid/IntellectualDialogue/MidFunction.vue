@@ -6,7 +6,7 @@
         <!-- 左侧图标logo -->
         <div class="functionLeft">
           <img v-if="midfunction.logo === 'IntellectualDialogue'" src="@/assets/Blue-IntellectualDialogue.png" alt="">
-          <img v-else-if="midfunction.logo === 'EnrollmentAndWelcome'" src="@/assets/Blue-EnrollmentAndWelcome.png" alt="">
+          <img v-else-if="midfunction.logo === 'PersonalRecommendation'" src="@/assets/Blue-PersonalRecommendation.png" alt="">
           <img v-else-if="midfunction.logo === 'ITQuestionsAndAnswers'" src="@/assets/Blue-ITQuestionsAndAnswers.png" alt="">
           <img v-else-if="midfunction.logo === 'EnployMentGuidance'" src="@/assets/Blue-EmployMentGuidance.png" alt="">
           <img v-else-if="midfunction.logo === 'ApplicationForm'" src="@/assets/Blue-ApplicationForm.png" alt="">
@@ -45,9 +45,9 @@
     }
     ,
     {
-      logo:'EnrollmentAndWelcome',
-      name:'招生迎新',
-      explain:'招生信息和迎新安排',
+      logo:'PersonalRecommendation',
+      name:'个性化推荐',
+      explain:'根据用户习惯推荐您感兴趣的内容',
       heatvalue:'19882',
     }
     , 

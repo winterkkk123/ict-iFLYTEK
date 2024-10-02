@@ -2,7 +2,7 @@
   <div class="crossCulturalChatRoom">
     <!-- 聊天框 -->
     <div class="chat-frame" id="chat-massages">
-      <ChatFrame />
+      <ChatFrame :startupTime="startupTime" :times="times" :dataMessages="dataMessages"/>
     </div>
     <!-- 语言选择 -->
     <div class="language-choice">
@@ -22,28 +22,58 @@
   import LanguageChoice from './CrossCulturalChatRoom/LanguageChoice.vue';
   import ChatFrame from './CrossCulturalChatRoom/ChatFrame.vue';
   
-  import { ref } from 'vue';
+  import { onMounted,ref } from 'vue';
+  
+  // 定义时间
+  const startupTime = ref<string>('');
 
+  // 定义 WebSocket 的引用
   const socket = ref<WebSocket | null>(null);
 
+  // 定义消息数组
+  const times = ref<string[]>([]);
+  const dataMessages = ref<string[]>([]);
+  
+  const setTime = () => {
+    const currentTime = new Date();
+    return formatTimestamp(currentTime);
+  };
+  // 格式化时间戳
+  const formatTimestamp = (date: Date) => {
+    return date.toLocaleString([], { hour12: false }); // 格式化时间戳
+  };
+    
+  // 查找聊天室并建立 WebSocket 连接
   const findChatRoom = (username: string, sourceLang: string, targetLang: string) => {
     if (!socket.value) {
-      socket.value = new WebSocket(`ws://118.178.138.32:8081/imserver/${username}/${sourceLang}/${targetLang}`);
-
+      // 创建 WebSocket 连接
+      socket.value = new WebSocket(`ws://118.178.138.32:8081/imserver/${username}/${sourceLang}`);
+      
+      // WebSocket 连接打开时触发
       socket.value.onopen = () => {
         console.log('连接成功');
       };
 
+      // WebSocket 接收到消息时触发
       socket.value.onmessage = (event) => {
+        // //获取时间
+        const currentTime = setTime();
+        const message = event.data;
+        
+        times.value.push(currentTime);
+        dataMessages.value.push(message);
+        
         const messagesDiv = document.getElementById('messages') as HTMLDivElement;
-        messagesDiv.innerHTML += `<div>${event.data}</div>`;
+        // messagesDiv.innerHTML += `<div>${event.data}</div>`;
         messagesDiv.scrollTop = messagesDiv.scrollHeight; // 滚动到底部
       };
 
+       // WebSocket 连接关闭时触发
       socket.value.onclose = () => {
         console.log('连接关闭');
       };
 
+      // WebSocket 发生错误时触发
       socket.value.onerror = (error) => {
         console.error('WebSocket 发生错误:', error);
       };
@@ -57,6 +87,7 @@
       alert('WebSocket 尚未连接');
     }
   };
+
 </script>
 
 <style scoped>

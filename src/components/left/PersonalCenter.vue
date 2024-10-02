@@ -34,7 +34,7 @@
   .profile-photo {
     height: 70%;
     aspect-ratio: 1 / 1;
-    background-image: url("@/assets/ProfilePhoto.jpg"); /* 替换为你的图片路径 */
+    background-image: url("@/assets/UserAvatar/ProfilePhoto.jpg"); /* 替换为你的图片路径 */
     background-size: cover; /* 使图片覆盖整个元素 */
     background-position: center; /* 图片居中显示 */
     border-radius: 50%; /* 将 div 转换为圆形 */

@@ -10,6 +10,7 @@ src文件夹:
 	main.ts-主ts文件
 
 	assets-所有照片的资源
+		UserAvatar用户头像文件夹
 
 	router-路由的布局:
 		index.ts-路由器的总布局
@@ -32,7 +33,6 @@ src文件夹:
 		mid-中间组件文件夹：	
 			ApplicationForm-志愿填报组件文件夹
 			EmployMentGuidance-就业指导组件文件夹
-			EnrollmentAndWelcome-招生迎新组件文件夹
 			ITQuestionsAndAnswers-IT问答组件文件夹
 			IntellectualDialogue-智能对话组件文件夹
 				Annotate.vue-最下边注释组件
@@ -42,13 +42,14 @@ src文件夹:
 				Question.vue-提问组件
 				User.vue-用户提问组件
 			CrossCulturalChatRoom-跨文化聊天室组件文件夹
+			PersonalRecommendation-个性化推荐组件文件夹
 
 			ApplicationForm.vue-志愿填报组件
 			EmployMentGuidance.vue-就业指导组件
-			EnrollmentAndWelcome.vue-招生迎新组件
 			IntellectualDialogue.vue-智能对话组件
 			ITQuestionsAndAnswers.vue-IT问答组件
-			CrossCulturalChatRoom.vue-跨文化聊天室组件文件夹
+			CrossCulturalChatRoom.vue-跨文化聊天室组件
+			PersonalRecommendation.vue-个性化推荐组件
 		
 		right-右侧组件文件夹：
 			Files.vue-文件组件
