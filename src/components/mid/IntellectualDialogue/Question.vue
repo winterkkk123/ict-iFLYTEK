@@ -18,9 +18,48 @@
   };
 
   // 检测点击发送按钮
-  const emitSearchClick = () => {
-    emit('search-click', inputValue.value);
+  const emitSearchClick = async () => {
+    if (!inputValue.value) return; // 如果输入为空则不发送
+    emit('search-click', { question: inputValue.value,  answer: ''}); // 发送问题，答案空值
+    let inputVal = inputValue.value;  // 保存到inputVal中
     inputValue.value = ''; // 清空输入框
+
+    try {
+      // 发送请求到服务器
+      const response = await fetch('http://118.178.138.32:8081/agent/question', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ content: inputVal}),
+      });
+
+      if (!response.ok) {
+        throw new Error('网络响应不正常');
+      }
+
+      const rawAnswer = await response.text(); // 获取返回的字符串
+      console.log("答案:", rawAnswer);
+
+      let answer = '';
+// 使用正则表达式提取 data 后的内容
+      const matches = rawAnswer.match(/data:\s*([\s\S]*?)(?=\n\s*event:reply|$)/g);
+
+// 拼接提取的内容
+      if (matches) {
+        answer = matches.map(match => match.replace(/data:\s*/, '').trim()).join(''); // 去掉 'data:' 并修剪空白
+        console.log(answer); // 输出结果
+      } else {
+        console.log('没有找到匹配项');
+      }
+      answer = answer.slice(0, -19);
+
+      answer = answer.replace(/data:/, '');
+
+      emit('search-click', { question: '',  answer}); // 问题空值
+    } catch (error) {
+      console.error('发送问题时出错:', error);
+    }
   };
 </script>
 

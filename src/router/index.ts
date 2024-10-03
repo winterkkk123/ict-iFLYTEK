@@ -12,7 +12,7 @@ import CrossCulturalChatRoom from "@/components/mid/CrossCulturalChatRoom.vue"
 // 创建路由实例
 const router = createRouter({
   history:createWebHashHistory(),   //路由模式
-  
+
   routes:[
     //默认路由
     {

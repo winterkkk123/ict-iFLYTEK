@@ -8,9 +8,10 @@
     <!-- 问题提问之后产生 -->
     <div v-if="isQuestionAsked" class="after-question">
       <div class="after-question-top"></div>
-      <div v-for="(item, index) in questions" :key="index" class="user">
-        <User :question="item.question" class="user"/>
-        <Chat :answer="item.answer" class="chat"/>
+      <div v-for="(item, index) in questions" :key="index" class="question-item">
+        <!-- 检查 question 和 answer 是否为空 -->
+        <User v-if="item.question && !item.answer" :question="item.question" class="user"/>
+        <Chat v-else-if="item.answer" :answer="item.answer" class="chat"/>
       </div>
     </div>
     <!-- 底部提问模块,一直存在 -->
@@ -33,15 +34,16 @@
 
   // 定义一个响应式变量来追踪是否已提出问题
   const isQuestionAsked = ref(false);
-  
+
   // 存储提问和回答的内容
   const questions = reactive<
     Array<{ question: string; answer: string }>
   >([]);
 
   // 处理搜索按钮点击的方法
-  function onSearchClick(value: string) {
-    const newQuestion = { question: value, answer: '' };
+  function onSearchClick(payload : any) {
+    const newQuestion = { question: payload.question, answer: payload.answer };
+    console.log("newquestion", newQuestion);
     questions.push(newQuestion);
     isQuestionAsked.value = true;
   }
@@ -70,7 +72,7 @@
   }
   .after-question {
     width:100%;
-    height: auto; 
+    height: auto;
     min-height: 90%;
     max-height: 90%;
   }
