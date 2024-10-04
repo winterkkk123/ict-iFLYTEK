@@ -38,7 +38,7 @@
     border-radius: 50%; /* 将 div 转换为圆形 */
   }
   .chat-answer {
-    width: 80%;
+    width: 92%;
     height: 100%;
     min-height: 50px;
     font-size: 1.5rem;

@@ -1,12 +1,12 @@
 <template>
   <div class="user">
-    <!-- 用户提问板块 -->
-    <div class="user-response">
-      {{ question }}
-    </div>
     <!-- 头像 -->
     <div class="user-avatar">
       <div class="profile-photo"></div>
+    </div>
+    <!-- 用户提问板块 -->
+    <div class="user-response">
+      {{ question }}
     </div>
   </div>
 </template>
@@ -28,7 +28,6 @@
   .user-avatar {
     width: 80px;
     height: 100%;
-    margin-left: 20px; /* 添加左边距 */
   }
   .profile-photo {
     width: 75%;
@@ -41,26 +40,14 @@
     /* margin-left: 10%; */
   }
   .user-response {
-    width: 80%;
+    width: 92%;
     height: 100%;
     min-height: 50px;
     font-size: 1.5rem;
     line-height: 2;
-    margin-left: 10%; /* 将左边距设置为自动 */
     margin-top: 0.5%;
     padding: 0 2%;
     background-color: white;
     border-radius: 7px;
-  }
-
-  .chat-message-right .message-right {
-    width: 92%;
-    max-width: 96%;
-    margin-right: 2%;
-    padding: 3%;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: rgb(217,234,252);
-    border-radius: 10px;
   }
 </style>

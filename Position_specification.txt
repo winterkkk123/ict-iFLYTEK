@@ -42,7 +42,13 @@ src文件夹:
 				Question.vue-提问组件
 				User.vue-用户提问组件
 			CrossCulturalChatRoom-跨文化聊天室组件文件夹
+				Annotate.vue-最下边注释组件
+				ChatFrame.vue-聊天框组件
+				EnterMessage.vue-输入信息组件
+				LanguageChoice.vue-语言转换组件
 			PersonalRecommendation-个性化推荐组件文件夹
+				RecommendationInformationImg.vue-有照片的推荐组件
+				ReconmmendationInformationImg.vue-没有照片的推荐组件
 
 			ApplicationForm.vue-志愿填报组件
 			EmployMentGuidance.vue-就业指导组件
