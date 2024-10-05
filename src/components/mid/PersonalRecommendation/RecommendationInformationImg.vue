@@ -1,6 +1,6 @@
 <template>
   <div class=recommendationInformationImg>
-    <a href="#">
+    <a href="#" class="info-link">
       <!-- 照片 -->
       <img :src="content.photoLink" alt="推荐图片" />
       <!-- 信息 -->
@@ -47,11 +47,12 @@
     display: flex;
     align-items: center;
   }
-  .recommendationInformationImg a {
+  .recommendationInformationImg a.info-link {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
+    transition: all 0.3s ease; /* 添加过渡效果 */
   }
   .recommendationInformationImg img{
     width: 35%;
@@ -59,6 +60,10 @@
     height: 100%;
     max-height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease; /* 图片的过渡效果 */
+  }
+  .recommendationInformationImg a:hover img {
+    transform: scale(1.05); /* 鼠标悬停时图片放大 */
   }
   .content-details{
     width: 65%;
@@ -81,6 +86,10 @@
     color: black;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: transform 0.3s ease; /* 文字部分的过渡效果 */
+  }
+  .recommendationInformationImg a:hover .title {
+    transform: translateY(-10px); /* 鼠标悬停时文字向上移动 */
   }
   .content-details .title-bottom {
     width: 100%;

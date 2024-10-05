@@ -48,6 +48,10 @@
     height: auto;
     font-size: 26px;
     color: black;
+    transition: transform 0.3s ease; /* 文字部分的过渡效果 */
+  }
+  .recommendation-information a:hover .title {
+    transform: translateY(-10px); /* 鼠标悬停时文字向上移动 */
   }
   .title-bottom {
     width: 100%;
