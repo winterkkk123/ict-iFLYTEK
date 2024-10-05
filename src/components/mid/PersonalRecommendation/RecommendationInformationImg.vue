@@ -1,8 +1,8 @@
 <template>
   <div class=recommendationInformationImg>
-    <a href="#" class="info-link">
+    <a :href="content.sourceUrl" class="info-link">
       <!-- 照片 -->
-      <img :src="content.photoLink" alt="推荐图片" />
+      <img :src="content.coverUrl" alt="推荐图片" />
       <!-- 信息 -->
       <div class="content-details">
         <!-- 标题，用盒子设置上下间距 -->
@@ -14,12 +14,12 @@
         <div class="content-bottom">
           <div class="left">
             <!-- 栏目标签 -->
-            <div class="topic-label">{{ content.topicLabel }}</div>
+            <div class="topic-label">{{ content.topicTags }}</div>
             <!-- 来源 -->
-            <div class="content-source">{{ content.contentSource }}</div>
+            <div class="content-source">{{ content.topicSource }}</div>
           </div>
           <!-- 时间 -->
-          <div class="time">{{ content.time }}</div>
+          <div class="time">{{ content.publicTime }}</div>
         </div>
       </div>
     </a>
@@ -29,21 +29,24 @@
 <script lang="ts" setup name="RecommendationInformationImg">
   import { ref } from 'vue';
 
-   // 定义内容对象
-   const content = ref({
-    photoLink: 'https://imgoss.ilive.cn/image/202410/04/1728025420856_365x204.jpg',
-    topicLabel: '科技',
-    title: '2nn半导体工艺突破极限：成本指数级暴增，晶圆均价飙升超3万美元',
-    // topicLabelId: 'tech-001', 
-    contentSource: '科技媒体',
-    time: '2023-10-01'
-  });
+  defineProps<{
+    content: {
+      sourceUrl: string;
+      coverUrl: string;
+      topicTags: string;
+      title: string;
+      topicSource: string;
+      publicTime: string;
+    };
+  }>();
+  
 </script>
 
 <style scoped>
   .recommendationInformationImg{
     width: 100%;
     height: 160px;
+    max-height: 160px;
     display: flex;
     align-items: center;
   }

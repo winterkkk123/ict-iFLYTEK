@@ -6,8 +6,7 @@
     </div>
     <!-- chat回答模块 -->
     <div class="chat-answer" >
-      <span v-if="newAnswer === ''">...</span>
-      <span v-else>{{ newAnswer }}</span>
+      <span>您好,如果您有任何IT的问题或需要帮助，请随时告诉我。我会尽力为您提供支持和解答。</span>
     </div>
   </div>
 </template>

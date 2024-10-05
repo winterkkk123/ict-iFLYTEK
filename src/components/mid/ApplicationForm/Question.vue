@@ -27,7 +27,7 @@
 
     try {
       // 发送请求到服务器
-      const response = await fetch('http://118.178.138.32:8081/agent/question', {
+      const response = await fetch('http://118.178.138.32:8081/agent/question/schoolChoose', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,8 +46,8 @@
       // 使用正则表达式提取 data 后的内容
       const matches = rawAnswer.match(/data:\s*([\s\S]*?)(?=\n\s*data:|\n\s*event:reply|$)/g);
 
-      // 拼接提取的内容
-      if (matches) {
+     // 拼接提取的内容
+     if (matches) {
         answer = matches.map(match => match.replace(/data:\s*/, '').trim()).join('');
         answer = matches.map(match => {
           // 去除 data: 和 data:1 到 data:9
@@ -76,7 +76,7 @@
       answer = answer.slice(0, -12);
 
       answer = answer.replace(/data:/, '');
-
+      
       emit('search-click', { question: '',  answer}); // 问题空值
     } catch (error) {
       console.error('发送问题时出错:', error);

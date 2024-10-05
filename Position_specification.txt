@@ -32,8 +32,23 @@ src文件夹:
 
 		mid-中间组件文件夹：	
 			ApplicationForm-志愿填报组件文件夹
+				Annotate.vue-最下边注释组件
+				Chat.vue-chat回答组件
+				Question.vue-提问组件
+				User.vue-用户提问组件
+				FirstChat.vue-chat提示板块
 			EmployMentGuidance-就业指导组件文件夹
+				Annotate.vue-最下边注释组件
+				Chat.vue-chat回答组件
+				Question.vue-提问组件
+				User.vue-用户提问组件
+				FirstChat.vue-chat提示板块
 			ITQuestionsAndAnswers-IT问答组件文件夹
+				Annotate.vue-最下边注释组件
+				Chat.vue-chat回答组件
+				Question.vue-提问组件
+				User.vue-用户提问组件
+				FirstChat.vue-chat提示板块
 			IntellectualDialogue-智能对话组件文件夹
 				Annotate.vue-最下边注释组件
 				Chat.vue-chat回答组件

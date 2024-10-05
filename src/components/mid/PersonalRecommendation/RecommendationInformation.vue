@@ -1,6 +1,6 @@
 <template>
   <div class="recommendation-information">
-    <a href="#">
+    <a :href="content.sourceUrl">
       <div class="recommendation-information">
         <!-- 标题 -->
         <div class="title">{{ content.title }}</div>
@@ -10,12 +10,12 @@
         <div class="content-bottom">
           <div class="left">
             <!-- 栏目标签 -->
-            <div class="topic-label">{{ content.topicLabel }}</div>
+            <div class="topic-label">{{ content.topicTags }}</div>
             <!-- 来源 -->
-            <div class="content-source">{{ content.contentSource }}</div>
+            <div class="content-source">{{ content.topicSource }}</div>
           </div>
           <!-- 时间 -->
-          <div class="time">{{ content.time }}</div>
+          <div class="time">{{ content.publicTime }}</div>
         </div>
       </div>
     </a>
@@ -25,14 +25,16 @@
 <script lang="ts" setup name="RecommendationInformation">
   import { ref } from 'vue';
 
-  // 定义内容对象
-  const content = ref({
-    topicLabel: '科技',
-    title: '欧盟要求YouTube、Snapchat、TikTok提供有关推荐算法的信息',
-    // topicLabelId: 'tech-001', 
-    contentSource: '财经经济媒体',
-    time: '2023-10-01'
-  });
+  defineProps<{
+    content: {
+      sourceUrl: string;
+      topicTags: string;
+      title: string;
+      topicSource: string;
+      publicTime: string;
+    };
+  }>();
+  
 </script>
 
 <style scoped>

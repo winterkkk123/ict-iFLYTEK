@@ -27,7 +27,7 @@
 
     try {
       // 发送请求到服务器
-      const response = await fetch('http://118.178.138.32:8081/agent/question', {
+      const response = await fetch('http://118.178.138.32:8081/agent/question/workGuide', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

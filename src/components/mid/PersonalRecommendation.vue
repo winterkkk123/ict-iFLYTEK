@@ -12,17 +12,21 @@
           v-for="(topic, index) in topics" 
           :key="index" 
           @click="selectTopic(topic)" 
-          :class="{ active: currentTopic === topic }"
+          :class="{ active: currentTopic.topicName === topic.topicName }"
         >
-          {{ topic }}
+          {{ topic.topicName }}
         </li>
       </ul>
 
       <!-- 推荐内容 -->
       <ul class="recommendation-content">
-        <!-- {{ currentTopic }} -->
-        <RecommendationInformationImg class="recommendation-information-img"/>
-        <RecommendationInformation class="recommendation-information"/>
+        <li 
+          v-for="(content, index) in currentContent" 
+          :key="index"
+        >
+          <RecommendationInformationImg v-if="hasImage(content)" :content="prepareContent(content)" />
+          <RecommendationInformation v-else :content="content" />
+        </li>
       </ul>
 
       <!-- 下方留白 -->
@@ -34,18 +38,68 @@
 <script lang="ts" setup name="PersonalRecommendation">
   import RecommendationInformation from "./PersonalRecommendation/RecommendationInformation.vue";
   import RecommendationInformationImg from "./PersonalRecommendation/RecommendationInformationImg.vue";
-  import { ref } from "vue";
+  import { ref, onMounted } from "vue";
 
   // 定义话题列表
-  const topics = ref(["推荐", "热点", "视频", "娱乐","国际","财经","科技","体育","社会","教育","生活"]);
-
+  const topics = ref<{ topicName: string; topicId: string }[]>([]);
+  
   // 当前选中的话题，默认为推荐
-  const currentTopic = ref("推荐");
+  const currentTopic = ref<{ topicName: string; topicId: string }>({ topicName: "", topicId: "" });
 
   // 切换话题
-  function selectTopic(topic: string) {
+  function selectTopic(topic: { topicName: string; topicId: string }) {
     currentTopic.value = topic;
+    fetchContent(topic.topicId);
   }
+
+  // 获取主题
+  async function fetchTopics() {
+    const response = await fetch('http://118.178.138.32:8081/topic/list', { method: 'POST' });
+    const data = await response.json();
+    return data.data;
+  }
+
+  // 获取当前话题的内容
+  async function fetchContent(topicId: string) {
+    const response = await fetch('http://118.178.138.32:8081/topic/content', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ topicId })
+    });
+    const data = await response.json();
+    const contents = data.data;
+    currentContent.value = contents;
+  }
+
+   // 动态内容数组
+   const currentContent = ref<{ title: string; topicSource: string; publicTime: string; coverUrl?: string; sourceUrl: string; topicTags: string }[]>([]);
+
+  // 检查内容是否有图片
+  function hasImage(content: { coverUrl?: string }) {
+    return !!content.coverUrl;
+  }
+
+  // 准备内容
+  function prepareContent(content: { title: string; topicSource: string; publicTime: string; coverUrl?: string; sourceUrl: string; topicTags: string }): { title: string; topicSource: string; publicTime: string; coverUrl: string; sourceUrl: string; topicTags: string } {
+    return {
+      ...content,
+      coverUrl: content.coverUrl || 'default-image-url.jpg' // 提供默认图片URL
+    };
+  }
+
+  // 初始化时获取话题列表
+  onMounted(async () => {
+    const fetchedTopics = await fetchTopics();
+    topics.value = fetchedTopics;
+    
+    // 设置默认话题为话题列表中的第一个话题
+    if (topics.value.length > 0) {
+      currentTopic.value = topics.value[0];
+      fetchContent(currentTopic.value.topicId);
+    }
+  });
   
 </script>
 
@@ -109,8 +163,7 @@
     flex-direction: column; /* 以列排列 */
     width: 100%; /* 不超出容器宽度 */
   }
-  .recommendation-content .recommendation-information-img,
-  .recommendation-content .recommendation-information {
+  .recommendation-content li {
     margin-bottom: 30px;
   }
 </style>
