@@ -15,6 +15,9 @@
         <span @click="forgotPassword">忘记密码</span>
         <span @click="accountRegistration" class="accountRegistration">注册账号</span>
       </div>
+      <!-- 警告信息 -->
+      <div class="warning" v-if="!showWarning"></div>
+      <div class="warning" v-if="showWarning">{{ warningMessage }}</div>
       <!-- 用户协议 -->
       <div class="user-agreement">
         <label class="checkbox-label">
@@ -31,23 +34,65 @@
 </template>
 
 <script lang="ts" setup name="Register">
-  import { reactive } from 'vue';
+  import { ref, reactive } from 'vue';
+  import { watch } from 'vue';
 
   const userInfo = reactive({
+    photoUrl:'',
     email:'',
     studentNumber:'',
     password:''
   })  
-  
+
+  // 设置默认提示信息
+  const emailPlaceholder = ref('请输入你的邮箱');
+  const studentNumberPlaceholder = ref('请输入你的学号');
+  const passwordPlaceholder = ref('请输入你的密码');
+
+  // 监听输入框的变化
+  watch(() => userInfo.email, (newEmail) => {
+    if (newEmail !== '') {
+      emailPlaceholder.value = '';
+    } else {
+      emailPlaceholder.value = '请输入你的邮箱';
+    }
+  });
+
+  watch(() => userInfo.studentNumber, (newStudentNumber) => {
+    if (newStudentNumber !== '') {
+      studentNumberPlaceholder.value = '';
+    } else {
+      studentNumberPlaceholder.value = '请输入你的学号';
+    }
+  });
+
+  watch(() => userInfo.password, (newPassword) => {
+    if (newPassword !== '') {
+      passwordPlaceholder.value = '';
+    } else {
+      passwordPlaceholder.value = '请输入你的密码';
+    }
+  });
+
+  // 定义警告信息状态
+  const showWarning = ref(false);
+  const warningMessage = ref('');
+
   // 定义 emit 事件
   const emit = defineEmits(['login']);
-  
+
   // 登录按钮点击事件
   const handleLogin = () => {
     // 触发登录事件
-    // console.log('登录按钮被点击');
-    emit('login'); // 发出 login 事件
-  }
+    if (userInfo.email === '13867767793@163.com' && userInfo.studentNumber === '22081024' && userInfo.password === 'heartlesscloud') {
+      emit('login'); // 发出 login 事件
+      showWarning.value = false;
+    } else {
+      warningMessage.value = '登录密码错误';
+      showWarning.value = true;
+      alert('登录密码错误');
+    }
+  };
   
   // 注册账号按钮点击事件
   const accountRegistration = () => {
@@ -135,7 +180,7 @@
 
   .user-agreement {
     width: 80%;
-    margin-top: 7%;
+    margin-top: 3%;
     margin-left: 10%;
     display: flex;
     font-size: 0.9rem;
@@ -153,6 +198,16 @@
     color: #007bff;
     text-decoration: none;
     cursor: pointer;
+  }
+  .warning {
+    width: 80%;
+    height: 5%;
+    color: red;
+    text-align: left;
+    font-size: 0.75rem;
+    padding-left: 1%;
+    margin-top: 1%;
+    margin-left: 10%;
   }
   
   button {

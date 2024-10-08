@@ -2,7 +2,7 @@
   <div class="personal-center">
     <div class="top">
       <div class="profile-photo"></div>
-      <div class="student-number">541149882@qq.com</div>
+      <div class="student-number">13867767793@163.com</div>
       <div class="concealLeft"><img src="@/assets/concealLeft.png" alt=""></div>
     </div>
     <div class="bottom">
