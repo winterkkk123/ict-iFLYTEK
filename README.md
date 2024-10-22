@@ -16,20 +16,27 @@ npm run dev
 
 index.html: 主 HTML 文件。
 public/favicon.ico: 浏览器的图标。
+
 src:
 App.vue: 主页面的组件。
 main.ts: 主 TypeScript 文件。
+
 assets:
 UserAvatar: 用户头像文件夹。
+
 router:
 index.ts: 路由器的总布局。
+
 components:
 Left.vue: 左侧总组件。
 Mid.vue: 中间总组件。
 Right.vue: 右侧总组件。
-Register.vue: 注册登录总组件。
+LoginAndRegister.vue: 注册登录总组件。
 
-    Register:
+    LoginAndRegister:
+      ForgetThePassword.vue-忘记密码组件
+    		Login.vue-登录组件
+    		Register.vue-注册组件
 
     left:
       Logo.vue: 标志组件。
@@ -79,9 +86,9 @@ Register.vue: 注册登录总组件。
         CrossCulturalChatRoom.vue: 跨文化聊天室组件。
         PersonalRecommendation.vue: 个性化推荐组件。
 
-    right:
-    Files.vue: 文件组件。
-    Folders.vue: 文件夹组件。
-    RightTitle.vue: 标题组件。
-    Search.vue: 搜索组件。
-    SeeMore.vue: 查看更多组件。
+      right:
+        Files.vue: 文件组件。
+        Folders.vue: 文件夹组件。
+        RightTitle.vue: 标题组件。
+        Search.vue: 搜索组件。
+        SeeMore.vue: 查看更多组件。

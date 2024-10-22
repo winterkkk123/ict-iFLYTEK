@@ -19,9 +19,12 @@ src文件夹:
 		Left.vue-左侧总组件
 		Mid.vue-中间总组件
 		Right.vue-右侧总组件
-		Register.vue-注册登录总组件
+		LoginAndRegister.vue-注册登录总组件
+			ForgetThePassword.vue-忘记密码组件
+			Login.vue-登录组件
+			Register.vue-注册组件
 		
-		Register-注册登录组件文件夹:
+		LoginAndRegister-注册登录组件文件夹:
 
 		left-左侧组件文件夹：
 			Logo.vue-标志组件

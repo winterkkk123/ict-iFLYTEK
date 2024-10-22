@@ -5,10 +5,8 @@
       <div class="avatar"></div>
     </div>
     <!-- chat回答模块 -->
-    <div class="chat-answer" >
-      <span v-if="newAnswer === ''">...</span>
-      <span v-else>{{ newAnswer }}</span>
-    </div>
+    <div class="chat-answer" v-if="newAnswer === ''">...</div>
+    <div class="chat-answer" v-else v-html="newAnswer.replace(/\n/g, '<br>')"></div>
   </div>
 </template>
 

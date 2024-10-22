@@ -5,15 +5,21 @@
     <Right class="right-component"/>
   </div>
   <!-- 注册登录组件 -->
-  <Register v-if="isRegisterVisible" @login="handleLogin" class="register-component"/>
+  <LoginAndRegister v-if="isRegisterVisible" @login="handleLogin" class="register-component"/>
 </template>
 
 <script lang="ts" setup name="App">
   import Left from './components/Left.vue'
   import Right from './components/Right.vue'
   import Mid from './components/Mid.vue'
-  import Register from './components/Register.vue'
-  import { ref } from 'vue'
+  import LoginAndRegister from './components/LoginAndRegister.vue'
+  import { reactive, ref } from 'vue'
+
+  const nowUserMessage = reactive({
+    photoUrl:'',
+    email:'',
+    studentNumber:''
+  })
 
   const isRegisterVisible = ref(true)
 

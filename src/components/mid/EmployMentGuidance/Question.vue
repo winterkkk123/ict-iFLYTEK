@@ -48,27 +48,16 @@
 
       // 拼接提取的内容
       if (matches) {
-        answer = matches.map(match => match.replace(/data:\s*/, '').trim()).join('');
         answer = matches.map(match => {
-          // 去除 data: 和 data:1 到 data:9
-          const cleanedMatch = match.replace(/data:\s*(\d)|data:\s*/g, '').trim();
-          // 去除 event:reply
-          const withoutEvent = cleanedMatch.replace(/event:reply/g, '');
-          // 去除 **数据**
-          const withoutData = withoutEvent.replace(/\*\*数据\*\*/g, '');
-          // 去除 ###
-          const finalAnswer = withoutData.replace(/### /g, '');
-          // 处理 **{...} 并进行换行
-          const formattedAnswer = finalAnswer.replace(/\*\*{([^}]*)}\*\*/g, (match, p1) => {
-            return `\n\n${p1}\n\n`;
-          });
-          // 去除 ** 并进行换行
-          const formattedContent = formattedAnswer.replace(/\*\*(.*?)\*\*/g, (match, p1) => {
-            return `\n\n${p1}\n\n`;
-          });
-
-          return formattedContent;
+          // 清理匹配的内容
+          const cleanedMatch = match.replace(/data:\s*/g, '').trim(); // 移除 'data:'
+          return cleanedMatch.replace(/event:reply/g, '') // 移除 'event:reply'
+                              .replace(/\*\*数据\*\*/g, '') // 移除 '**数据**'
+                              .replace(/### /g, '\n') // 移除 '### '
+                              .replace(/\*\*(.*?)\*\*/g, (match, p1) => `${p1}`) // 格式化 '**文本**:'
+                              .replace(/\*\*{([^}]*)}\*\*/g, (match, p1) => `\n${p1}\n`); // 格式化 '**{...}**'
         }).join('');
+
         console.log(answer); // 输出结果
       } else {
         console.log('没有找到匹配项');
@@ -76,6 +65,8 @@
       answer = answer.slice(0, -12);
 
       answer = answer.replace(/data:/, '');
+      // 去掉最后一个空行
+      answer = answer.replace(/\n$/, '');
 
       emit('search-click', { question: '',  answer}); // 问题空值
     } catch (error) {
