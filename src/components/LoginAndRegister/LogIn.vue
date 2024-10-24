@@ -7,7 +7,7 @@
     </div>
     <!-- 输入框 -->
     <input type="email" placeholder="请输入你的邮箱" id="email" v-model="userInfo.email" class="input" required>
-    <input type="text" placeholder="请输入你的学号" id="studentNumber" v-model="userInfo.studentNumber" class="input" required>
+    <input type="text" placeholder="请输入你的学号" id="studentNumber" v-model="userInfo.studentNum" class="input" required>
     <input type="password" placeholder="请输入你的密码" id="password" v-model="userInfo.password" class="input" required>
     <!-- 忘记密码和注册账号 -->
     <div class="Forgot-password-and-account-registration">
@@ -35,28 +35,29 @@
   import { ref, reactive } from 'vue';
   import { watch } from 'vue';
   import { useRouter } from 'vue-router';
-
-  const router = useRouter();
+  import axios from 'axios';
 
   const userInfo = reactive({
-    photoUrl:'',
+    headShot:'',
     email:'',
-    studentNumber:'',
+    studentNum:'',
     password:''
   })  
 
-  const userMessage = reactive({
-    user1: {
-      email: '13867767793@163.com',
-      studentNumber: '22081024',
-      password: 'heartlesscloud'
-    },
-    user2: {
-      email: '541149882@qq.com',
-      studentNumber: '22030211',
-      password: '20040831'
-    }
-  })
+  // const userMessage = reactive({
+  //   user1: {
+  //     email: '13867767793@163.com',
+  //     studentNumber: '22081024',
+  //     password: 'heartlesscloud'
+  //   },
+  //   user2: {
+  //     email: '541149882@qq.com',
+  //     studentNumber: '22030211',
+  //     password: '20040831'
+  //   }
+  // })
+  
+  const userMessage = reactive([]);
 
   // 设置默认提示信息
   const emailPlaceholder = ref('请输入你的邮箱');
@@ -72,7 +73,7 @@
     }
   });
 
-  watch(() => userInfo.studentNumber, (newStudentNumber) => {
+  watch(() => userInfo.studentNum, (newStudentNumber) => {
     if (newStudentNumber !== '') {
       studentNumberPlaceholder.value = '';
     } else {
@@ -96,26 +97,46 @@
   const emit = defineEmits(['login', 'register', 'forgotPassword']);
 
   // 登录按钮点击事件
-  const handleLogin = () => {
-    // 检查所有用户信息
-    const isValidUser = Object.values(userMessage).some((user) => {
-      return (
-        userInfo.email === user.email &&
-        userInfo.studentNumber === user.studentNumber &&
-        userInfo.password === user.password
-      );
-    });
+  const handleLogin = async () => {
+    const requestData = {
+      email: userInfo.email,
+      studentNum: userInfo.studentNum,
+      password: userInfo.password
+    };
 
-    if (isValidUser) {
-      emit('login'); // 发出 login 事件
-      showWarning.value = false;
-    } else {
-      warningMessage.value = '登录密码错误';
+    try {
+      const response = await axios.post('http://118.178.138.32:8081/user/login/by/password', requestData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log(requestData);
+      console.log(response.data);
+
+      // 检查 response.data.code 和 response.data.message
+      if (response.data && response.data.code === 200) {
+        const { token } = response.data.data;
+        localStorage.setItem('token', token); // 存储 token
+        showWarning.value = false;
+        warningMessage.value = '';
+
+        // 触发 login 事件并传递登录成功的相关信息
+        emit('login', { success: true, message: '登录成功', token: token });
+
+        console.log('登录成功', response.data);
+      } else {
+        showWarning.value = true;
+        warningMessage.value = response.data.message || '登录失败，服务器返回数据格式不正确。';
+        console.error('服务器返回数据格式不正确', response.data);
+      }
+    } catch (error) {
       showWarning.value = true;
-      alert('登录密码错误');
+      warningMessage.value = '登录失败，请检查您的凭据。';
+      console.error('请求失败', error);
     }
   };
-  
+
   // 注册账号按钮点击事件
   const accountRegistration = () => {
     emit('register');

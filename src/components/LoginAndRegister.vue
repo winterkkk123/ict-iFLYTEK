@@ -1,8 +1,8 @@
 <template>
   <div class="loginAndRegister">
-    <ForgetThePassword v-if="isForgetThePassword" class="forgetThePassword"/>
-    <Register v-if="isRegister" class="register"/>
-    <LogIn v-if="isLogin" @login="handleLogin" @register="handleRegister" @forgotPassword="handleForgotPassword" class="login"/>
+    <ForgetThePassword v-if="isForgetThePassword" @login="handleLogin" @register="handleRegister" @forgotPassword="handleForgotPassword" class="forgetThePassword"/>
+    <Register v-if="isRegister" @login="handleLogin" @register="handleRegister" @forgotPassword="handleForgotPassword" class="register"/>
+    <LogIn v-if="isLogin" @login="gotoLogin" @register="handleRegister" @forgotPassword="handleForgotPassword" class="login"/>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
   import LogIn from './LoginAndRegister/LogIn.vue'
   import ForgetThePassword from './LoginAndRegister/ForgetThePassword.vue';
   import Register from './LoginAndRegister/Register.vue';
-  import { defineEmits } from 'vue'
+  // import { defineEmits } from 'vue'
   import { ref } from 'vue'
 
   // 定义点击事件
@@ -22,16 +22,22 @@
   const isForgetThePassword = ref(false);
 
   // 点击登录
-  const handleLogin = () => {
+  const gotoLogin = () => {
     emit('login')
   }
-  // 点击注册
+  // 去登录
+  const handleLogin = () => {
+    isLogin.value = true;
+    isRegister.value = false;
+    isForgetThePassword.value = false;
+  }
+  // 去注册
   const handleRegister = () => {
     isLogin.value = false;
     isRegister.value = true;
     isForgetThePassword.value = false;
   }
-  // 点击忘记密码
+  // 去忘记密码
   const handleForgotPassword = () => {
     isLogin.value = false;
     isRegister.value = false;

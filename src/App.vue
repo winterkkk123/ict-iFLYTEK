@@ -1,8 +1,8 @@
 <template>
    <div :class="{'background-blur': isRegisterVisible}" class="background">
     <Left class="left-component"/>
-    <Mid class="mid-component"/>
-    <Right class="right-component"/>
+    <Mid  class="mid-component"/>
+    <Right  class="right-component"/>
   </div>
   <!-- 注册登录组件 -->
   <LoginAndRegister v-if="isRegisterVisible" @login="handleLogin" class="register-component"/>
@@ -16,8 +16,8 @@
   import { reactive, ref } from 'vue'
 
   const nowUserMessage = reactive({
-    photoUrl:'',
-    email:'',
+    headShot:'/assets/UserAvatar/ProfilePhoto.jpg',
+    email:'xxx@qq.com',
     studentNumber:''
   })
 

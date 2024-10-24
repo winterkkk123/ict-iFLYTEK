@@ -1,8 +1,12 @@
 <template>
   <div class="personal-center">
     <div class="top">
-      <div class="profile-photo"></div>
-      <div class="student-number">13867767793@163.com</div>
+      <!-- 头像 -->
+      <div class="profile-photo">
+        <img :src="photo_url" alt="">
+      </div>
+      
+      <div class="student-number">541149882@qq.com</div>
       <div class="concealLeft"><img src="@/assets/concealLeft.png" alt=""></div>
     </div>
     <div class="bottom">
@@ -14,7 +18,22 @@
 </template>
 
 <script lang="ts" setup name="PersonalCenter">
+  import { ref, onMounted } from 'vue';
 
+  const photo_url = ref('/assets/UserAvatar/ProfilePhoto.jpg');
+  
+  // const photo_url = ref<string>('');
+  // onMounted(() => {
+  //   if (props.userInfo.headShot) {
+  //     try {
+  //       // 使用 new URL 构造函数生成图片的 URL
+  //       photo_url.value = new URL(`@/${props.userInfo.headShot}`, import.meta.url).href;
+  //     } catch (error) {
+  //       console.error('Failed to load image:', error);
+  //       photo_url.value = new URL('@/assets/default-avatar.png', import.meta.url).href; // 设置默认头像
+  //     }
+  //   }
+  // });
 </script>
 
 <style scoped>
@@ -34,12 +53,18 @@
   .profile-photo {
     height: 70%;
     aspect-ratio: 1 / 1;
-    background-image: url("@/assets/UserAvatar/ProfilePhoto.jpg"); /* 替换为你的图片路径 */
-    background-size: cover; /* 使图片覆盖整个元素 */
-    background-position: center; /* 图片居中显示 */
+    /* background-image: url("@/assets/UserAvatar/ProfilePhoto.jpg"); 替换为你的图片路径 */
+    /* background-size: cover; /* 使图片覆盖整个元素 */
+    /* background-position: center; 图片居中显示 */
     border-radius: 50%; /* 将 div 转换为圆形 */
     margin: 5%;
     margin-left: 10%;
+    overflow: hidden; /* 确保图片不会溢出 */
+  }
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 使图片覆盖整个元素 */
   }
   .student-number {
     max-width: 55%;

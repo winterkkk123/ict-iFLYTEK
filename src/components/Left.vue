@@ -16,6 +16,7 @@
   import Navigation from './left/Navigation.vue';
   import LeftFunction from './left/LeftFunction.vue';
   import PersonalCenter from './left/PersonalCenter.vue';
+  
 </script>
 
 <style scoped>
