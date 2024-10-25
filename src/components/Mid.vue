@@ -6,6 +6,18 @@
 
 <script lang="ts" setup name="Mid">
   import { RouterView } from 'vue-router';
+  import { provide } from 'vue';
+
+  const props = defineProps<{
+    userMessage: {
+      headshot: string,
+      email: string,
+      studentNumber: string
+    }
+  }>()
+
+  // 使用 provide 提供 userMessage 数据
+  provide('userMessage', props.userMessage);
 </script>
 
 <style scoped>

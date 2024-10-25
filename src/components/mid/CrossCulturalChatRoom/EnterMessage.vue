@@ -1,6 +1,12 @@
 <template>
   <div class="EnterMessagen">
-    <input type="text" v-model="message" placeholder="请输入消息" class="input"/>
+    <input 
+      type="text" 
+      v-model="message" 
+      placeholder="请输入消息" 
+      class="input" 
+      @keyup.enter="sendMessage" 
+    />
     <button @click="sendMessage">发送</button>
   </div>
 </template>

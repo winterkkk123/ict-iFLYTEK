@@ -6,7 +6,7 @@
     <LeftFunction class="left-function"/>
     <Navigation/>
     <History/>
-    <PersonalCenter class="personal-center"/>
+    <PersonalCenter :userMessage="userMessage" class="personal-center"/>
   </div>
 </template>
 
@@ -16,7 +16,15 @@
   import Navigation from './left/Navigation.vue';
   import LeftFunction from './left/LeftFunction.vue';
   import PersonalCenter from './left/PersonalCenter.vue';
-  
+
+  const props = defineProps<{
+    userMessage: {
+      headshot: string,
+      email: string,
+      studentNumber: string
+    }
+  }>()
+
 </script>
 
 <style scoped>

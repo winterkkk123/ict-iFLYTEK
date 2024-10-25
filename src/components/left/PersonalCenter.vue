@@ -3,10 +3,10 @@
     <div class="top">
       <!-- 头像 -->
       <div class="profile-photo">
-        <img :src="photo_url" alt="">
+        <img :src="userMessage.headshot" alt="">
       </div>
       
-      <div class="student-number">541149882@qq.com</div>
+      <div class="student-number">{{ userMessage.email }}</div>
       <div class="concealLeft"><img src="@/assets/concealLeft.png" alt=""></div>
     </div>
     <div class="bottom">
@@ -21,6 +21,14 @@
   import { ref, onMounted } from 'vue';
 
   const photo_url = ref('/assets/UserAvatar/ProfilePhoto.jpg');
+
+  const props = defineProps<{
+    userMessage: {
+      headshot: string,
+      email: string,
+      studentNumber: string
+    }
+  }>()
   
   // const photo_url = ref<string>('');
   // onMounted(() => {

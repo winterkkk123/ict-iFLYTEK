@@ -26,7 +26,7 @@
             <span class="message-right">{{ parseMessage(dataMessages[index]).message }}</span>
           </div>
           <!-- 头像 -->
-          <div class="avatar-right"></div>
+          <div class="avatar-right"><img :src="userMessage.headshot" alt=""></div>
         </div>
         
         <!-- 左侧消息-他人消息 -->
@@ -55,6 +55,11 @@
     startupTime: string;
     times: string[];
     dataMessages: string[];
+    userMessage: {
+      headshot: string;
+      email: string;
+      studentNumber: string;
+    }
   }>();
   
    // 解析消息内容
@@ -182,10 +187,15 @@
     width: 10%;
     height: 100%;
     aspect-ratio: 1 / 1;
-    background-image: url("@/assets/UserAvatar/ProfilePhoto.jpg"); /* 替换为你的图片路径 */
-    background-size: cover; /* 使图片覆盖整个元素 */
+    /* background-image: url("@/assets/UserAvatar/ProfilePhoto.jpg"); /* 替换为你的图片路径 */
+    /* background-size: cover; 使图片覆盖整个元素 */
     background-position: center; /* 图片居中显示 */
     border-radius: 50%; /* 将 div 转换为圆形 */
+    overflow: hidden; /* 确保内部内容不会溢出 */
+  }
+  .avatar-right img {
+    width: 100%;
+    height: 100%;
   }
   .message-content-right {
     width: 90%;

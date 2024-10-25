@@ -2,7 +2,7 @@
   <div class="loginAndRegister">
     <ForgetThePassword v-if="isForgetThePassword" @login="handleLogin" @register="handleRegister" @forgotPassword="handleForgotPassword" class="forgetThePassword"/>
     <Register v-if="isRegister" @login="handleLogin" @register="handleRegister" @forgotPassword="handleForgotPassword" class="register"/>
-    <LogIn v-if="isLogin" @login="gotoLogin" @register="handleRegister" @forgotPassword="handleForgotPassword" class="login"/>
+    <LogIn v-if="isLogin" @login="gotoLogin" @register="handleRegister" @forgotPassword="handleForgotPassword" @userData="handleUserData" class="login"/>
   </div>
 </template>
 
@@ -14,7 +14,13 @@
   import { ref } from 'vue'
 
   // 定义点击事件
-  const emit = defineEmits(['login'])
+  const emit = defineEmits(['login','userData']) 
+
+  const userInfo = ref({
+    headshot: '',
+    studentNum:'',
+    email:''
+  });
   
   // 定义组件是否显示
   const isLogin = ref(true);
@@ -42,6 +48,12 @@
     isLogin.value = false;
     isRegister.value = false;
     isForgetThePassword.value = true;
+  }
+
+  // 获取用户数据
+  const handleUserData = (userData:any) => {
+    userInfo.value = userData;
+    emit('userData',userInfo.value);
   }
 </script>
 

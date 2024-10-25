@@ -2,7 +2,9 @@
   <div class="user">
     <!-- 头像 -->
     <div class="user-avatar">
-      <div class="profile-photo"></div>
+      <div class="profile-photo">
+        <img :src="userMessage.headshot" alt="">
+      </div>
     </div>
     <!-- 用户提问板块 -->
     <div class="user-response">
@@ -15,7 +17,15 @@
   import { ref } from 'vue';
   // import { defineProps } from 'vue';
 
-  const props = defineProps<{ question?: string }>();
+  const props = defineProps<{
+    userMessage: {
+      headshot: string;
+      email: string;
+      studentNumber: string;
+    },
+    question?: string
+  }>();
+  
   const question = ref(props.question || '');
 </script>
 
@@ -32,12 +42,17 @@
   .profile-photo {
     width: 75%;
     aspect-ratio: 1 / 1;
-    background-image: url("@/assets/UserAvatar/ProfilePhoto.jpg"); /* 替换为你的图片路径 */
-    background-size: cover; /* 使图片覆盖整个元素 */
+    /* background-image: url("@/assets/UserAvatar/ProfilePhoto.jpg"); /* 替换为你的图片路径 */
+    /* background-size: cover; 使图片覆盖整个元素 */
     background-position: center; /* 图片居中显示 */
     border-radius: 50%; /* 将 div 转换为圆形 */
+    overflow: hidden; /* 确保内部内容不会溢出 */
     /* margin: 5%; */
     /* margin-left: 10%; */
+  }
+  .profile-photo img {
+    width: 100%;
+    height: 100%;
   }
   .user-response {
     width: 92%;

@@ -2,7 +2,7 @@
   <div class="crossCulturalChatRoom">
     <!-- 聊天框 -->
     <div class="chat-frame" id="chat-massages">
-      <ChatFrame :startupTime="startupTime" :times="times" :dataMessages="dataMessages"/>
+      <ChatFrame :startupTime="startupTime" :times="times" :dataMessages="dataMessages" :userMessage="userMessage"/>
     </div>
     <!-- 语言选择 -->
     <div class="language-choice">
@@ -23,6 +23,14 @@ import LanguageChoice from './CrossCulturalChatRoom/LanguageChoice.vue';
 import ChatFrame from './CrossCulturalChatRoom/ChatFrame.vue';
 
 import { onMounted,ref } from 'vue';
+
+import { inject } from 'vue';
+
+// 使用 inject 获取 userMessage 数据
+const userMessage = inject<{ headshot: string; email: string; studentNumber: string }>('userMessage');
+if (!userMessage) {
+    throw new Error('userMessage is not provided');
+  }
 
 // 定义时间
 const startupTime = ref<string>('');

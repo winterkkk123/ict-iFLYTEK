@@ -1,5 +1,5 @@
 <template>
-  <div class="register-content">
+  <div class="register-content" @keyup.enter="handleLogin">
     <!-- 标题logo -->
     <div class="logo">
       <img src="@/assets/logo.png" alt="logo">
@@ -36,7 +36,8 @@
   import { watch } from 'vue';
   import { useRouter } from 'vue-router';
   import axios from 'axios';
-
+  
+  // 定义登录信息
   const userInfo = reactive({
     headShot:'',
     email:'',
@@ -94,7 +95,7 @@
   const warningMessage = ref('');
 
   // 定义 emit 事件
-  const emit = defineEmits(['login', 'register', 'forgotPassword']);
+  const emit = defineEmits(['login', 'register', 'forgotPassword','userData']);
 
   // 登录按钮点击事件
   const handleLogin = async () => {
@@ -103,36 +104,49 @@
       studentNum: userInfo.studentNum,
       password: userInfo.password
     };
-
+    const userData = {
+      headshot: '',
+      email: userInfo.email,
+      studentNum: userInfo.studentNum,
+    };
+    
     try {
       const response = await axios.post('http://118.178.138.32:8081/user/login/by/password', requestData, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-
-      console.log(requestData);
-      console.log(response.data);
-
+      
       // 检查 response.data.code 和 response.data.message
       if (response.data && response.data.code === 200) {
         const { token } = response.data.data;
         localStorage.setItem('token', token); // 存储 token
+
+        // 假设服务器返回的 user 对象中包含头像地址
+        if (response.data.data.headshot) {
+          userData.headshot = response.data.data.headshot;
+        }
+
         showWarning.value = false;
         warningMessage.value = '';
 
         // 触发 login 事件并传递登录成功的相关信息
         emit('login', { success: true, message: '登录成功', token: token });
 
+        // 传递学号到父组件
+        emit('userData', userData);
+
         console.log('登录成功', response.data);
       } else {
         showWarning.value = true;
         warningMessage.value = response.data.message || '登录失败，服务器返回数据格式不正确。';
+        alert(warningMessage.value); // 使用 alert 显示警告信息
         console.error('服务器返回数据格式不正确', response.data);
       }
     } catch (error) {
       showWarning.value = true;
       warningMessage.value = '登录失败，请检查您的凭据。';
+      alert(warningMessage.value); // 使用 alert 显示警告信息
       console.error('请求失败', error);
     }
   };

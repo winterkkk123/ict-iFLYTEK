@@ -7,7 +7,7 @@
       <div v-for="(item, index) in questions" :key="index" class="question-item">
         <!-- <FirstChat class="first-chat"/> -->
         <!-- 检查 question 和 answer 是否为空 -->
-        <User v-if="item.question && !item.answer" :question="item.question" class="user"/>
+        <User v-if="item.question && !item.answer" :question="item.question" :userMessage="userMessage" class="user"/>
         <Chat v-else-if="item.answer" :answer="item.answer" class="chat"/>
       </div>
     </div>
@@ -27,6 +27,15 @@
   import FirstChat from './ITQuestionsAndAnswers/FirstChat.vue'
 
   import { ref,reactive } from 'vue';
+
+  import { inject } from 'vue';
+
+  // 使用 inject 获取 userMessage 数据
+  const userMessage = inject<{ headshot: string; email: string; studentNumber: string }>('userMessage');
+
+  if (!userMessage) {
+    throw new Error('userMessage is not provided');
+  }
 
   // 定义一个响应式变量来追踪是否已提出问题
   const isQuestionAsked = ref(true);

@@ -1,11 +1,11 @@
 <template>
    <div :class="{'background-blur': isRegisterVisible}" class="background">
-    <Left class="left-component"/>
-    <Mid  class="mid-component"/>
+    <Left :userMessage="nowUserMessage" class="left-component"/>
+    <Mid :userMessage="nowUserMessage" class="mid-component"/>
     <Right  class="right-component"/>
   </div>
   <!-- 注册登录组件 -->
-  <LoginAndRegister v-if="isRegisterVisible" @login="handleLogin" class="register-component"/>
+  <LoginAndRegister v-if="isRegisterVisible" @login="handleLogin" @userData="handleUserData" class="register-component"/>
 </template>
 
 <script lang="ts" setup name="App">
@@ -16,7 +16,7 @@
   import { reactive, ref } from 'vue'
 
   const nowUserMessage = reactive({
-    headShot:'/assets/UserAvatar/ProfilePhoto.jpg',
+    headshot:'/assets/UserAvatar/AnonymousAvatar.png',
     email:'xxx@qq.com',
     studentNumber:''
   })
@@ -30,6 +30,13 @@
   const handleLogin = () => {
     hideRegister();
   };
+
+  const handleUserData = ( userData: {headshot: string, studentNum: string, email: string} ) => {
+    nowUserMessage.studentNumber = userData.studentNum;
+    console.log(userData);
+    nowUserMessage.email = userData.email;
+    nowUserMessage.headshot = userData.headshot;
+  }
 </script>
 
 <style scoped>
