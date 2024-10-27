@@ -7,6 +7,7 @@
 ## 安装依赖
 
 npm install
+npm install axios
 
 ## 启动项目
 
@@ -35,8 +36,8 @@ LoginAndRegister.vue: 注册登录总组件。
 
     LoginAndRegister:
       ForgetThePassword.vue-忘记密码组件
-    		Login.vue-登录组件
-    		Register.vue-注册组件
+    	Login.vue-登录组件
+    	Register.vue-注册组件
 
     left:
       Logo.vue: 标志组件。

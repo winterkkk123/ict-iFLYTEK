@@ -32,6 +32,13 @@ src文件夹:
 			Navigation.vue-左侧导航栏组件
 			History.vue-历史记录组件
 			PersonalCenter.vue-个人中心组件
+			
+		right-右侧组件文件夹：
+			Files.vue-文件组件
+			Folders.vue-文件夹组件
+			RightTitle.vue-标题组件
+			Search.vue-搜索组件
+			SeeMore.vue-查看更多组件
 
 		mid-中间组件文件夹：	
 			ApplicationForm-志愿填报组件文件夹
@@ -67,18 +74,29 @@ src文件夹:
 			PersonalRecommendation-个性化推荐组件文件夹
 				RecommendationInformationImg.vue-有照片的推荐组件
 				ReconmmendationInformationImg.vue-没有照片的推荐组件
-
+			ThesisWriting-论文写作组件文件夹
+				Annotate.vue-最下边注释组件
+				ChatFrame.vue-聊天框组件
+				EnterMessage.vue-输入信息组件
+				LanguageChoice.vue-语言转换组件
+				FirstChat.vue-chat提示板块
+			PsychologicalCounseling-心理咨询组件文件夹
+				Annotate.vue-最下边注释组件
+				ChatFrame.vue-聊天框组件
+				EnterMessage.vue-输入信息组件
+				LanguageChoice.vue-语言转换组件
+				FirstChat.vue-chat提示板块
+				EmotionalDistributionMap.vue-情感分布图组件
+				ExchangeButton.vue-交换按钮组件
+			CustomizeAIWork-自定义AI工作组件文件夹
+				
 			ApplicationForm.vue-志愿填报组件
 			EmployMentGuidance.vue-就业指导组件
 			IntellectualDialogue.vue-智能对话组件
 			ITQuestionsAndAnswers.vue-IT问答组件
 			CrossCulturalChatRoom.vue-跨文化聊天室组件
 			PersonalRecommendation.vue-个性化推荐组件
-		
-		right-右侧组件文件夹：
-			Files.vue-文件组件
-			Folders.vue-文件夹组件
-			RightTitle.vue-标题组件
-			Search.vue-搜索组件
-			SeeMore.vue-查看更多组件
+			ThesisWriting.vue-论文写作组件
+			PsychologicalCounseling.vue-心理咨询组件
+			CustomizeAIWork.vue-自定义AI工作组件
 		
