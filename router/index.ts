@@ -10,6 +10,7 @@ import ITQuestionsAndAnswers from "@/components/mid/ITQuestionsAndAnswers.vue"
 import CrossCulturalChatRoom from "@/components/mid/CrossCulturalChatRoom.vue"
 import ThesisWriting from "@/components/mid/ThesisWriting.vue"
 import PsychologicalCounseling from "@/components/mid/PsychologicalCounseling.vue"
+import CustomizeAIWork from "@/components/mid/CustomizeAIWork.vue"
 
 // 创建路由实例
 const router = createRouter({
@@ -54,6 +55,10 @@ const router = createRouter({
     {
       path:'/psychologicalCounseling',
       component:PsychologicalCounseling
+    },
+    {
+      path:'/customizeAIWork',
+      component: CustomizeAIWork
     }
   ]
 })

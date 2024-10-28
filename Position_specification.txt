@@ -40,7 +40,17 @@ src文件夹:
 			Search.vue-搜索组件
 			SeeMore.vue-查看更多组件
 
-		mid-中间组件文件夹：	
+		mid-中间组件文件夹：
+			ApplicationForm.vue-志愿填报组件
+			EmployMentGuidance.vue-就业指导组件
+			IntellectualDialogue.vue-智能对话组件
+			ITQuestionsAndAnswers.vue-IT问答组件
+			CrossCulturalChatRoom.vue-跨文化聊天室组件
+			PersonalRecommendation.vue-个性化推荐组件
+			ThesisWriting.vue-论文写作组件
+			PsychologicalCounseling.vue-心理咨询组件
+			CustomizeAIWork.vue-自定义AI工作组件
+				
 			ApplicationForm-志愿填报组件文件夹
 				Annotate.vue-最下边注释组件
 				Chat.vue-chat回答组件
@@ -90,13 +100,5 @@ src文件夹:
 				ExchangeButton.vue-交换按钮组件
 			CustomizeAIWork-自定义AI工作组件文件夹
 				
-			ApplicationForm.vue-志愿填报组件
-			EmployMentGuidance.vue-就业指导组件
-			IntellectualDialogue.vue-智能对话组件
-			ITQuestionsAndAnswers.vue-IT问答组件
-			CrossCulturalChatRoom.vue-跨文化聊天室组件
-			PersonalRecommendation.vue-个性化推荐组件
-			ThesisWriting.vue-论文写作组件
-			PsychologicalCounseling.vue-心理咨询组件
-			CustomizeAIWork.vue-自定义AI工作组件
+			
 		

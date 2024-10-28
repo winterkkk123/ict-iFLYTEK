@@ -35,6 +35,12 @@
         </RouterLink>
       </li>
       <li>
+        <RouterLink to="/CustomizeAIWork" class="routerlink" active-class="at-present">
+          <img src="@/assets/CustomizeAIWork.png" alt="">
+          自定义AI处理
+        </RouterLink>
+      </li>
+      <li>
         <RouterLink to="/employMentGuidance" class="routerlink" active-class="at-present">
           <img src="@/assets/EmployMentGuidance.png" alt="">
           就业指导

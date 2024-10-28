@@ -56,7 +56,6 @@
   }
   .avatar {
     width: 75%;
-    min-width: 75%;
     aspect-ratio: 1 / 1;
     background-image: url("@/assets/logo.png"); /* 替换为你的图片路径 */
     background-size: cover; /* 使图片覆盖整个元素 */

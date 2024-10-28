@@ -32,7 +32,7 @@
         
         <!-- 否则为正常消息 -->
         <!-- 右侧消息-本人消息 -->
-        <div v-else-if="parseMessage(dataMessages[index]).name === userName+':'" class="chat-message-right">
+        <div v-else-if="parseMessage(dataMessages[index]).name === userMessage.username+':'" class="chat-message-right">
           <!-- 解析消息内容 -->
           <div class="message-content-right">
             <span class="name-right">{{ parseMessage(dataMessages[index]).name }}</span>
@@ -67,6 +67,7 @@
     times: string[];
     dataMessages: string[];
     userMessage: {
+      username: string;
       headshot: string;
       email: string;
       studentNumber: string;
@@ -75,11 +76,10 @@
   }>();
   
    // 解析消息内容
-  const parseMessage = (message: string): { name: string; message: string } => {
-    const parts = message.split(': ');
-    const words = message.split(' ');
-    const name = words[0];
-    const messageContent = words.slice(1).join(' ');
+   const parseMessage = (message: string): { name: string; message: string } => {
+    const parts = message.split(':', 1);
+    const name = parts[0] + ':';
+    const messageContent = message.slice(name.length).trim();
     return { name, message: messageContent };
   };
 
