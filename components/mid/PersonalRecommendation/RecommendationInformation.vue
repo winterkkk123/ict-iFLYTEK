@@ -1,6 +1,6 @@
 <template>
   <div class="recommendation-information">
-    <a :href="content.sourceUrl">
+    <a :href="content.sourceUrl" target="_blank">
       <div class="recommendation-information">
         <!-- 标题 -->
         <div class="title">{{ content.title }}</div>

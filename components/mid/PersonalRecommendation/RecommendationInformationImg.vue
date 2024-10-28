@@ -1,6 +1,6 @@
 <template>
   <div class=recommendationInformationImg>
-    <a :href="content.sourceUrl" class="info-link">
+    <a :href="content.sourceUrl" class="info-link" target="_blank">
       <!-- 照片 -->
       <img :src="content.coverUrl" alt="推荐图片" />
       <!-- 信息 -->
