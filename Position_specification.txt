@@ -72,8 +72,8 @@ src文件夹:
 			IntellectualDialogue-智能对话组件文件夹
 				Annotate.vue-最下边注释组件
 				Chat.vue-chat回答组件
-				MidFunction.vue-中间功能组件（6个最开始出现，提问时候消失）
-				MidTitle.vue-标题组件（最开始出现，提问的时候消失）
+				MidFunction.vue-中间功能组件(6个最开始出现,提问时候消失)
+				MidTitle.vue-标题组件(最开始出现,提问的时候消失)
 				Question.vue-提问组件
 				User.vue-用户提问组件
 			CrossCulturalChatRoom-跨文化聊天室组件文件夹
