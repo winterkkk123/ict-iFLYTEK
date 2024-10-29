@@ -6,9 +6,9 @@
       <h2>自定义智能AI</h2>
       <div id="agents">
         <div class="agent" v-for="(agent, index) in agents" :key="index">
-          <input type="text" placeholder="Agent Name" class="agentName" v-model="agent.agentName" required>
-          <input type="text" placeholder="Prompts" class="agentPrompts" v-model="agent.agentPrompts" required>
-          <input type="text" placeholder="Task" class="agentTask" v-model="agent.agentTask" required>
+          <input type="text" placeholder="写出AI名字" class="agentName" v-model="agent.agentName" required>
+          <input type="text" placeholder="说明AI功能" class="agentPrompts" v-model="agent.agentPrompts" required>
+          <input type="text" placeholder="任务" class="agentTask" v-model="agent.agentTask" required>
         </div>
         <button class="add-button" @click="addAgent">添加智能AI</button>
       </div>
@@ -25,7 +25,7 @@
     <div class="perpetual">
       <div>
         <h2>内容</h2>
-        <textarea class="content-textarea" id="content" rows="4" v-model="content" placeholder="在此输入内容..." required></textarea>
+        <textarea class="content-textarea" id="content" rows="4" v-model="content" placeholder="在此输入AI处理内容..." required></textarea>
       </div>
       <button class="start-button" @click="startWorkflow">开始工作流</button>
       <Annotate class="annotate"/>
