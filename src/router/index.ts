@@ -8,6 +8,9 @@ import PersonalRecommendation from "@/components/mid/PersonalRecommendation.vue"
 import IntellectualDialogue from "@/components/mid/IntellectualDialogue.vue"
 import ITQuestionsAndAnswers from "@/components/mid/ITQuestionsAndAnswers.vue"
 import CrossCulturalChatRoom from "@/components/mid/CrossCulturalChatRoom.vue"
+import ThesisWriting from "@/components/mid/ThesisWriting.vue"
+import PsychologicalCounseling from "@/components/mid/PsychologicalCounseling.vue"
+import CustomizeAIWork from "@/components/mid/CustomizeAIWork.vue"
 
 // 创建路由实例
 const router = createRouter({
@@ -44,6 +47,18 @@ const router = createRouter({
     {
       path:'/intellectualDialogue',
       component:IntellectualDialogue
+    },
+    {
+      path:'/thesisWriting',
+      component:ThesisWriting
+    },
+    {
+      path:'/psychologicalCounseling',
+      component:PsychologicalCounseling
+    },
+    {
+      path:'/customizeAIWork',
+      component: CustomizeAIWork
     }
   ]
 })

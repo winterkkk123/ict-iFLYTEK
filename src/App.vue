@@ -2,7 +2,7 @@
    <div :class="{'background-blur': isRegisterVisible}" class="background">
     <Left :userMessage="nowUserMessage" class="left-component"/>
     <Mid :userMessage="nowUserMessage" class="mid-component"/>
-    <Right  class="right-component"/>
+    <Right class="right-component"/>
   </div>
   <!-- 注册登录组件 -->
   <LoginAndRegister v-if="isRegisterVisible" @login="handleLogin" @userData="handleUserData" class="register-component"/>
@@ -16,6 +16,7 @@
   import { reactive, ref } from 'vue'
 
   const nowUserMessage = reactive({
+    username:'',
     headshot:'/assets/UserAvatar/AnonymousAvatar.png',
     email:'xxx@qq.com',
     studentNumber:''
@@ -31,11 +32,11 @@
     hideRegister();
   };
 
-  const handleUserData = ( userData: {headshot: string, studentNum: string, email: string} ) => {
+  const handleUserData = (userData: { username: string, headshot: string, studentNum: string, email: string }) => {
     nowUserMessage.studentNumber = userData.studentNum;
-    console.log(userData);
     nowUserMessage.email = userData.email;
     nowUserMessage.headshot = userData.headshot;
+    nowUserMessage.username = userData.username;
   }
 </script>
 
