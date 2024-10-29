@@ -2,11 +2,11 @@
   <div class="crossCulturalChatRoom">
     <!-- 聊天框 -->
     <div class="chat-frame" id="chat-massages">
-      <ChatFrame :startupTime="startupTime" :times="times" :dataMessages="dataMessages" :userMessage="userMessage"/>
+      <ChatFrame :startupTime="startupTime" :times="times" :dataMessages="dataMessages" :userMessage="userMessage" :userName="userName"/>
     </div>
     <!-- 语言选择 -->
     <div class="language-choice">
-      <LanguageChoice @find-chat-room="findChatRoom" />
+      <LanguageChoice :userMessage="userMessage" @find-chat-room="findChatRoom" />
     </div>
     <!-- 用户聊天输入 -->
     <div class="user-input">
@@ -17,84 +17,98 @@
 </template>
 
 <script lang="ts" setup name="CrossCulturalChatRoom">
-import EnterMessage from './CrossCulturalChatRoom/EnterMessage.vue';
-import Annotate from './CrossCulturalChatRoom/Annotate.vue';
-import LanguageChoice from './CrossCulturalChatRoom/LanguageChoice.vue';
-import ChatFrame from './CrossCulturalChatRoom/ChatFrame.vue';
+  import EnterMessage from './CrossCulturalChatRoom/EnterMessage.vue';
+  import Annotate from './CrossCulturalChatRoom/Annotate.vue';
+  import LanguageChoice from './CrossCulturalChatRoom/LanguageChoice.vue';
+  import ChatFrame from './CrossCulturalChatRoom/ChatFrame.vue';
 
-import { onMounted,ref } from 'vue';
+  import { onMounted,ref } from 'vue';
 
-import { inject } from 'vue';
+  import { inject } from 'vue';
 
-// 使用 inject 获取 userMessage 数据
-const userMessage = inject<{ headshot: string; email: string; studentNumber: string }>('userMessage');
-if (!userMessage) {
-    throw new Error('userMessage is not provided');
+  import axios from 'axios';
+
+  // 使用 inject 获取 userMessage 数据
+  const userMessage = inject<{username:string; headshot: string; email: string; studentNumber: string;}>('userMessage');
+  if (!userMessage) {
+      throw new Error('userMessage is not provided');
   }
+  const userName = ref('');
 
-// 定义时间
-const startupTime = ref<string>('');
+  // 定义时间
+  const startupTime = ref<string>('');
 
-// 定义 WebSocket 的引用
-const socket = ref<WebSocket | null>(null);
+  // 定义 WebSocket 的引用
+  const socket = ref<WebSocket | null>(null);
 
-// 定义消息数组
-const times = ref<string[]>([]);
-const dataMessages = ref<string[]>([]);
+  // 定义消息数组
+  const times = ref<string[]>([]);
+  const dataMessages = ref<string[]>([]);
 
-const setTime = () => {
-  const currentTime = new Date();
-  return formatTimestamp(currentTime);
-};
-// 格式化时间戳
-const formatTimestamp = (date: Date) => {
-  return date.toLocaleString([], { hour12: false }); // 格式化时间戳
-};
+  const setTime = () => {
+    const currentTime = new Date();
+    return formatTimestamp(currentTime);
+  };
+  // 格式化时间戳
+  const formatTimestamp = (date: Date) => {
+    return date.toLocaleString([], { hour12: false }); // 格式化时间戳
+  };
 
-// 查找聊天室并建立 WebSocket 连接
-const findChatRoom = (username: string, sourceLang: string, targetLang: string) => {
-  if (!socket.value) {
-    // 创建 WebSocket 连接
-    socket.value = new WebSocket(`ws://118.178.138.32:8081/imserver/${username}/${sourceLang}`);
+  // 查找聊天室并建立 WebSocket 连接
+  const findChatRoom = async (username: string, sourceLang: string, targetLang: string) => {
+    if (!socket.value) {
+      try {
+        userName.value = username;
+        // 从服务器获取用户名
+        // const response = await axios.get('http://your-api-endpoint/getUsername');
+        // const username = response.data.username;
 
-    // WebSocket 连接打开时触发
-    socket.value.onopen = () => {
-      console.log('连接成功');
-    };
+        // 创建 WebSocket 连接
+        socket.value = new WebSocket(`ws://118.178.138.32:8081/imserver/${userName.value}/${sourceLang}`);
+        // userName.value = username;
+        // console.log(username);
 
-    // WebSocket 接收到消息时触发
-    socket.value.onmessage = (event) => {
-      // //获取时间
-      const currentTime = setTime();
-      const message = event.data;
+        // WebSocket 连接打开时触发
+        socket.value.onopen = () => {
+          console.log('连接成功');
+        };
 
-      times.value.push(currentTime);
-      dataMessages.value.push(message);
+        // WebSocket 接收到消息时触发
+        socket.value.onmessage = (event) => {
+          // 获取时间
+          const currentTime = setTime();
+          const message = event.data;
 
-      const messagesDiv = document.getElementById('messages') as HTMLDivElement;
-      // messagesDiv.innerHTML += `<div>${event.data}</div>`;
-      messagesDiv.scrollTop = messagesDiv.scrollHeight; // 滚动到底部
-    };
+          times.value.push(currentTime);
+          dataMessages.value.push(message);
 
-    // WebSocket 连接关闭时触发
-    socket.value.onclose = () => {
-      console.log('连接关闭');
-    };
+          const messagesDiv = document.getElementById('chat-massages') as HTMLDivElement;
+          messagesDiv.scrollTop = messagesDiv.scrollHeight; // 滚动到底部
+        };
 
-    // WebSocket 发生错误时触发
-    socket.value.onerror = (error) => {
-      console.error('WebSocket 发生错误:', error);
-    };
-  }
-};
+        // WebSocket 连接关闭时触发
+        socket.value.onclose = () => {
+          console.log('连接关闭');
+        };
 
-const sendMessage = (message: string) => {
-  if (socket.value && socket.value.readyState === WebSocket.OPEN) {
-    socket.value.send(message);
-  } else {
-    alert('WebSocket 尚未连接');
-  }
-};
+        // WebSocket 发生错误时触发
+        socket.value.onerror = (error) => {
+          console.error('WebSocket 发生错误:', error);
+        };
+      } catch (error) {
+        console.error('获取用户名失败:', error);
+        alert('获取用户名失败，请检查网络连接或 API 地址');
+      }
+    }
+  };
+
+  const sendMessage = (message: string) => {
+    if (socket.value && socket.value.readyState === WebSocket.OPEN) {
+      socket.value.send(message);
+    } else {
+      alert('WebSocket 尚未连接');
+    }
+  };
 
 </script>
 

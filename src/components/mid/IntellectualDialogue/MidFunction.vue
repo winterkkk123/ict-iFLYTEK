@@ -6,6 +6,9 @@
         <!-- 左侧图标logo -->
         <div class="functionLeft">
           <img v-if="midfunction.logo === 'IntellectualDialogue'" src="@/assets/Blue-IntellectualDialogue.png" alt="">
+          <img v-else-if="midfunction.logo === 'ThesisWriting'" src="@/assets/Blue-ThesisWriting.png" alt="">
+          <img v-else-if="midfunction.logo === 'PsychologicalCounseling'" src="@/assets/Blue-PsychologicalCounseling.png" alt="">
+          <img v-else-if="midfunction.logo === 'CustomizeAIWork'" src="@/assets/Blue-CustomizeAIWork.png" alt="">
           <img v-else-if="midfunction.logo === 'PersonalRecommendation'" src="@/assets/Blue-PersonalRecommendation.png" alt="">
           <img v-else-if="midfunction.logo === 'ITQuestionsAndAnswers'" src="@/assets/Blue-ITQuestionsAndAnswers.png" alt="">
           <img v-else-if="midfunction.logo === 'EnployMentGuidance'" src="@/assets/Blue-EmployMentGuidance.png" alt="">
@@ -36,6 +39,13 @@
       explain:'输入你想查询的内容，智能回答问题',
       heatvalue:'10.3W',
     }
+    // ,
+    // {
+    //   logo:'ThesisWriting',
+    //   name:'论文写作',
+    //   explain:'辅助学生进行论文写作',
+    //   heatvalue:'23.55w'
+    // }
     ,
     {
       logo:'CrossCulturalChatRoom',
@@ -48,20 +58,20 @@
       logo:'PersonalRecommendation',
       name:'个性化推荐',
       explain:'根据用户习惯推荐您感兴趣的内容',
-      heatvalue:'19882',
+      heatvalue:'9882',
     }
     , 
     {
-      logo:'EnployMentGuidance',
-      name:'就业指导',
-      explain:'帮助学生未来发展就业进行指导',
+      logo:'PsychologicalCounseling',
+      name:'心理咨询',
+      explain:'帮助学生改善心理状况',
       heatvalue:'3.9W'
     }
     ,
     {
-      logo:'ApplicationForm',
-      name:'志愿填报',
-      explain:'辅助学生做出志愿填报',
+      logo:'CustomizeAIWork',
+      name:'自定义AI工作',
+      explain:'自己选择不同AI进行处理',
       heatvalue:'68224'
     }
     ,
@@ -69,8 +79,29 @@
       logo:'ITQuestionsAndAnswers',
       name:'IT问答',
       explain:'输入问题,自动做出回答',
-      heatvalue:'5.3W'
+      heatvalue:'9.3W'
     }
+    // , 
+    // {
+    //   logo:'EnployMentGuidance',
+    //   name:'就业指导',
+    //   explain:'帮助学生未来发展就业进行指导',
+    //   heatvalue:'3.9W'
+    // }
+    // ,
+    // {
+    //   logo:'ApplicationForm',
+    //   name:'志愿填报',
+    //   explain:'辅助学生做出志愿填报',
+    //   heatvalue:'68224'
+    // }
+    // ,
+    // {
+    //   logo:'ITQuestionsAndAnswers',
+    //   name:'IT问答',
+    //   explain:'输入问题,自动做出回答',
+    //   heatvalue:'9.3W'
+    // }
   ])
 </script>
 

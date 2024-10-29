@@ -17,6 +17,7 @@
   const emit = defineEmits(['login','userData']) 
 
   const userInfo = ref({
+    username:'',
     headshot: '',
     studentNum:'',
     email:''
@@ -51,7 +52,7 @@
   }
 
   // 获取用户数据
-  const handleUserData = (userData:any) => {
+  const handleUserData = (userData:{username:string, headshot: string, studentNum: string, email: string}) => {
     userInfo.value = userData;
     emit('userData',userInfo.value);
   }

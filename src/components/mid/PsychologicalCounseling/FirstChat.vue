@@ -5,8 +5,9 @@
       <div class="avatar"></div>
     </div>
     <!-- chat回答模块 -->
-    <div class="chat-answer" v-if="newAnswer === ''">...</div>
-    <div class="chat-answer" v-else v-html="newAnswer.replace(/\n/g, '<br>')"></div>
+    <div class="chat-answer" >
+      <span>您好,如果您有任何心理的问题或需要帮助，请随时告诉我。我会尽力为您提供支持和解答。</span>
+    </div>
   </div>
 </template>
 
@@ -56,7 +57,6 @@
   }
   .avatar {
     width: 75%;
-    min-width: 75%;
     aspect-ratio: 1 / 1;
     background-image: url("@/assets/logo.png"); /* 替换为你的图片路径 */
     background-size: cover; /* 使图片覆盖整个元素 */

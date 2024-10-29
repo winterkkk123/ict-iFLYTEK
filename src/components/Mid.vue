@@ -10,6 +10,7 @@
 
   const props = defineProps<{
     userMessage: {
+      username:string,
       headshot: string,
       email: string,
       studentNumber: string

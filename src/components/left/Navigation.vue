@@ -10,6 +10,12 @@
           智能对话
         </RouterLink>
       </li>
+      <!-- <li>
+        <RouterLink to="/thesisWriting" class="routerlink" active-class="at-present">
+          <img src="@/assets/ThesisWriting.png" alt="">
+          论文写作
+        </RouterLink>
+      </li> -->
       <li>
         <RouterLink to="/crossCulturalChatRoom" class="routerlink" active-class="at-present">
           <img src="@/assets/CrossCulturalChatRoom.png" alt="">
@@ -20,6 +26,18 @@
         <RouterLink to="/personalRecommendation" class="routerlink" active-class="at-present">
           <img src="@/assets/PersonalRecommendation.png" alt="">
           个性化推荐
+        </RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/PsychologicalCounseling" class="routerlink" active-class="at-present">
+          <img src="@/assets/PsychologicalCounseling.png" alt="">
+          心理辅导
+        </RouterLink>
+      </li>
+      <li>
+        <RouterLink to="/CustomizeAIWork" class="routerlink" active-class="at-present">
+          <img src="@/assets/CustomizeAIWork.png" alt="">
+          自定义AI处理
         </RouterLink>
       </li>
       <li>

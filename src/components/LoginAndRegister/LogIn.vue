@@ -39,6 +39,7 @@
   
   // 定义登录信息
   const userInfo = reactive({
+    username:'',
     headShot:'',
     email:'',
     studentNum:'',
@@ -105,6 +106,7 @@
       password: userInfo.password
     };
     const userData = {
+      username:'',
       headshot: '',
       email: userInfo.email,
       studentNum: userInfo.studentNum,
@@ -125,6 +127,7 @@
         // 假设服务器返回的 user 对象中包含头像地址
         if (response.data.data.headshot) {
           userData.headshot = response.data.data.headshot;
+          userData.username = response.data.data.username;
         }
 
         showWarning.value = false;
