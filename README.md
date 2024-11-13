@@ -118,3 +118,7 @@ App.vue-主页面的组件
                 Question.vue-提问组件
                 User.vue-用户提问组件
                 FirstChat.vue-chat提示板块
+                
+## 项目创新
+
+最后添加心理模块和自定义AI工作流，提高用户体验
