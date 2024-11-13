@@ -36,7 +36,7 @@ App.vue-主页面的组件
     	LoginAndRegister.vue-注册登录总组件
 
     	LoginAndRegister-注册登录组件文件夹:
-    			orgetThePassword.vue-忘记密码组件
+    		orgetThePassword.vue-忘记密码组件
     		Login.vue-登录组件
     		Register.vue-注册组件
 
@@ -113,8 +113,8 @@ App.vue-主页面的组件
     			EmotionalDistributionMap.vue-情感分布图组件
     			ExchangeButton.vue-交换按钮组件
     		CustomizeAIWork-自定义AI工作组件文件夹
-					Annotate.vue-最下边注释组件
-					Chat.vue-chat回答组件
-					Question.vue-提问组件
-					User.vue-用户提问组件
-					FirstChat.vue-chat提示板块
+    			Annotate.vue-最下边注释组件
+    			Chat.vue-chat回答组件
+    			Question.vue-提问组件
+    			User.vue-用户提问组件
+    			FirstChat.vue-chat提示板块
