@@ -113,11 +113,11 @@ App.vue-主页面的组件
     			EmotionalDistributionMap.vue-情感分布图组件
     			ExchangeButton.vue-交换按钮组件
     		CustomizeAIWork-自定义AI工作组件文件夹
-                Annotate.vue-最下边注释组件
-                Chat.vue-chat回答组件
-                Question.vue-提问组件
-                User.vue-用户提问组件
-                FirstChat.vue-chat提示板块
+                    Annotate.vue-最下边注释组件
+                    Chat.vue-chat回答组件
+                    Question.vue-提问组件
+                    User.vue-用户提问组件
+                    FirstChat.vue-chat提示板块
                 
 ## 项目创新
 
